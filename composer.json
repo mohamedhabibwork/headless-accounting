@@ -1,0 +1,83 @@
+{
+    "name": "headless/accounting",
+    "description": "Headless, polymorphic, multi-channel, multi-currency commerce & accounting engine for Laravel 13.",
+    "keywords": [
+        "laravel",
+        "headless",
+        "accounting",
+        "e-commerce",
+        "billing",
+        "payments",
+        "multi-currency",
+        "discounts",
+        "tax"
+    ],
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "^8.4",
+        "ext-json": "*",
+        "ext-bcmath": "*",
+        "illuminate/contracts": "^13.0",
+        "illuminate/database": "^13.0",
+        "illuminate/http": "^13.0",
+        "illuminate/support": "^13.0",
+        "illuminate/validation": "^13.0",
+        "illuminate/routing": "^13.0",
+        "illuminate/console": "^13.0",
+        "illuminate/events": "^13.0",
+        "illuminate/queue": "^13.0",
+        "illuminate/container": "^13.0",
+        "guzzlehttp/guzzle": "^7.8",
+        "ramsey/uuid": "^4.7",
+        "nesbot/carbon": "^3.7",
+        "symfony/http-foundation": "^7.0"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/pint": "^1.29",
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^4.0",
+        "pestphp/pest-plugin-laravel": "^4.0",
+        "phpunit/phpunit": "^12.0",
+        "spatie/ray": "^1.33"
+    },
+    "autoload": {
+        "psr-4": {
+            "Headless\\Accounting\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Headless\\Accounting\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Headless\\Accounting\\HeadlessAccountingServiceProvider"
+            ],
+            "aliases": {
+                "Accounting": "Headless\\Accounting\\Facades\\Accounting",
+                "Discounts": "Headless\\Accounting\\Facades\\Discounts",
+                "Tax": "Headless\\Accounting\\Facades\\Tax",
+                "Payments": "Headless\\Accounting\\Facades\\Payments"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test:unit": "vendor/bin/pest --testsuite=Unit",
+        "test:feature": "vendor/bin/pest --testsuite=Feature"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

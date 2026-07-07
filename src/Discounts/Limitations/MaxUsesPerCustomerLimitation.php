@@ -1,0 +1,44 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Headless\Accounting\Discounts\Limitations;
+
+use Headless\Accounting\Currency\Money;
+use Headless\Accounting\Discounts\BaseLimitation;
+use Headless\Accounting\Discounts\DiscountApplication;
+use Headless\Accounting\Discounts\EvaluationContext;
+use Headless\Accounting\Models\DiscountUsage;
+
+final class MaxUsesPerCustomerLimitation extends BaseLimitation
+{
+    public function type(): string
+    {
+        return 'max_per_customer';
+    }
+
+    public function apply(EvaluationContext $ctx, DiscountApplication $application): DiscountApplication
+    {
+        $max = (int) $this->get('max', 0);
+        $cid = $ctx->customer?->getKey();
+        if ($max <= 0 || ! $cid) {
+            return $application;
+        }
+
+        $used = DiscountUsage::query()
+            ->where('discount_id', $application->discountId)
+            ->where('customer_id', $cid)
+            ->count();
+
+        if ($used >= $max) {
+            return new DiscountApplication(
+                discountId: $application->discountId,
+                discountName: $application->discountName,
+                total: new Money(0, $application->total->currency),
+                requested: $application->requested,
+            );
+        }
+
+        return $application;
+    }
+}

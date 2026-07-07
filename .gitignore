@@ -1,0 +1,20 @@
+# Dependencies
+/vendor
+node_modules
+
+# IDE
+.idea
+.vscode
+.phpunit.result.cache
+
+# Local config
+.env
+.env.*
+!.env.example
+
+# Generated docs
+/docs/build
+/docs/.cache
+
+# Test caches
+/tests/coverage
