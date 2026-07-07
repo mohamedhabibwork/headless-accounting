@@ -3,7 +3,7 @@
 > A **headless**, **polymorphic**, **multi-channel**, **multi-currency**
 > commerce, ERP and accounting engine for **Laravel 13 / PHP 8.4**.
 
-`headless/accounting` is a domain layer you drop into any Laravel
+`mohamedhabibwork/headless-accounting` is a domain layer you drop into any Laravel
 application — B2C storefront, B2B portal, marketplace, POS back-office,
 SaaS billing pipeline or full ERP — to expose a single, REST-shaped
 JSON API for products, orders, customers, invoices, payments,
@@ -105,7 +105,7 @@ console commands, or another service.
 ## Installation
 
 ```bash
-composer require headless/accounting
+composer require mohamedhabibwork/headless-accounting
 ```
 
 Publish the config and migrations:

@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## [Unreleased]
 
 ### Added
-- Initial release of `headless/accounting`.
+- Initial release of `mohamedhabibwork/headless-accounting`.
 - Polymorphic Order, Payment, Discount, Invoice, and JournalEntry models.
 - Money / Currency / ExchangeRate value objects and persistence.
 - Discount engine supporting percentage, fixed, and buy-X-get-Y drivers.
